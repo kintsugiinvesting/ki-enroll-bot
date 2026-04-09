@@ -61,16 +61,14 @@ def send_confirm_buttons(chat_id, session):
 
 
 def enroll_student(name, email, product_id):
-    url = "https://thrivecart.com/api/external/customers"
+    url = "https://thrivecart.com/api/external/students"
     headers = {
         "Authorization": f"Bearer {THRIVECART_API_KEY}",
         "Content-Type": "application/json",
     }
     payload = {
-        "name": name,
         "email": email,
-        "product_id": product_id,
-        "send_receipt": True,
+        "course_id": product_id,
     }
     response = requests.post(url, json=payload, headers=headers)
     return response.status_code, response.json()
